@@ -1,4 +1,4 @@
-name: Primeiro Workflow
+name: Trabalhando steps
 
 on:
   push:
