@@ -1,0 +1,31 @@
+name: Trabalhando steps
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confere versao do Ubunto
+        run: cat /etc/os-release
+
+      - name: Exibir Mensagem
+        run: echo "Estou fazendo o curso de github Action" > mensagem.txt
+
+  job_2:
+    run-on: ubuntu-latest
+    steps:
+      - name: Acessa arquivo mensagem
+      - run: ls -lha
+
+      - name: Acessa arquivo mensagem
+      - run: cat mensagem.txt
+    
+
+
+
+
+
