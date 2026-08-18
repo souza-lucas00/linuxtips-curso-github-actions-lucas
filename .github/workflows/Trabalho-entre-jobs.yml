@@ -1,4 +1,4 @@
-name: Trabalhando steps
+name: Trabalhando jobs
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
         run: echo "Estou fazendo o curso de github Action" > mensagem.txt
 
   job_2:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Acessa arquivo mensagem
       - run: ls -lha
