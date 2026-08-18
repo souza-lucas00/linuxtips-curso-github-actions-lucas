@@ -16,7 +16,7 @@ jobs:
         run: echo "Estou fazendo o curso de github Action" > mensagem.txt
       
       - name: novo steps
-        runs: ls -lha
+        run: ls -lha
 
       - name: Lendo arquivos
         run: cat mensagem.txt
