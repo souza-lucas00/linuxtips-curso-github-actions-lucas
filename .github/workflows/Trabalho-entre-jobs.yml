@@ -27,7 +27,7 @@ jobs:
       - name: lista inicial
         run: ls -lha
 
-      - uses: actions/download
+      - uses: actions/download-artifact@v4
         with:
           name: strigus-upload
           path: strigus
