@@ -1,4 +1,4 @@
-name: Trabalhando jobs
+name: Trabalhando jobs compartilhando arquivo
 
 on:
   push:
@@ -13,12 +13,32 @@ jobs:
         run: cat /etc/os-release
 
       - name: Exibir Mensagem
-        run: echo "Estou fazendo o curso de github Action" > mensagem.txt
+        run: echo "Estou fazendo o curso de github Action" > ${{ github.workspace}}/mensagem.txt
+      
+      - uses:
+        with:
+          name: strigus-upload
+          path: ${{ github.workspace }}/mensagem.txt
+
 
   job_2:
     runs-on: ubuntu-latest
     steps:
-      - name: lista
+      - name: lista inicial
+        run: ls -lha
+
+      - uses: actions/download
+        with:
+          name: strigus-upload
+          path: strigus
+
+      - name: Ver conteudo do diretorio
+        run: ls -lha && ls ./strigus/
+      
+      - name: acessa arquivo mensagem
+        run: mv strigus/mensagem.txt . && rm -rf ./strigus
+
+      - name: lista apos mover e apagar pasta
         run: ls -lha
 
       - name: Acessa arquivo mensagem
