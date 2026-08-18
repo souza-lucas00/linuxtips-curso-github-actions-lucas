@@ -13,4 +13,12 @@ jobs:
         run: cat /etc/os-release
 
       - name: Exibir Mensagem
-        run: echo "Estou fazendo o curso de github Action"
+        run: echo "Estou fazendo o curso de github Action" > mensagem.txt
+      
+      - name: novo steps
+        runs: ls - lha
+
+      - name: Lendo arquivos
+        run: cat mensagem.txt
+
+
