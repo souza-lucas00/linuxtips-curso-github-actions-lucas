@@ -1,0 +1,16 @@
+name: Primeiro Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  giropops:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confere versao do Ubunto
+        run: cat /etc/os-release
+
+      - name: Exibir Mensagem
+        run: echo "Estou fazendo o curso de github Action"
