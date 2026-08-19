@@ -19,3 +19,5 @@ jobs:
       - name: Listar Imagens
         run: docker images
 
+      - name: Relatorio de Vulnerabilidade
+        run: docker scout cves "${{ inputs.imagem }}"
