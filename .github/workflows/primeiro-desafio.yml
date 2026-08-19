@@ -14,8 +14,8 @@ jobs:
    runs-on: ubuntu-latest
    steps:
       - name: Baixando Imagem selecionada
-        run: dokcer pull "${{ inputs.imagem }}"
+        run: docker pull "${{ inputs.imagem }}"
 
       - name: Listar Imagens
-        run: dokcer images
+        run: docker images
 
