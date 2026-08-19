@@ -19,5 +19,10 @@ jobs:
       - name: Listar Imagens
         run: docker images
 
+      - name: Instalar Docker Scout CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh -o install-scout.sh
+          sh install-scout.s
+
       - name: Relatorio de Vulnerabilidade
         run: docker scout cves "${{ inputs.imagem }}"
