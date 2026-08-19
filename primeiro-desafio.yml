@@ -1,0 +1,21 @@
+name: Primeiro Desafio
+
+on: 
+  workflow_dispatch:
+    inputs:
+       imagem:
+        description: "Informe uma Imagem a ser Consultada"
+        required: true
+        type: string
+
+
+jobs:
+  desafio:
+   runs-on:
+   steps:
+      - name: Baixando Imagem selecionada
+        run: dokcer pull "${{ inputs.imagem }}"
+
+      - name: Listar Imagens
+        run: dokcer images
+
