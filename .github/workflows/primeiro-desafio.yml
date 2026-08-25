@@ -1,21 +1,32 @@
 name: Primeiro Desafio
 
-on: 
+on:
   workflow_dispatch:
     inputs:
-       imagem:
+      imagem:
         description: "Informe uma Imagem a ser Consultada"
         required: true
         type: string
 
-
 jobs:
   desafio:
-   runs-on:
-   steps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Baixando Imagem selecionada
-        run: dokcer pull "${{ inputs.imagem }}"
+        run: docker pull "${{ inputs.imagem }}"
 
       - name: Listar Imagens
-        run: dokcer images
+        run: docker images
 
+      - name: Docker Scout
+        uses: docker/scout-action@v1
+        with:
+          command: cves
+          image: "${{ inputs.imagem }}"
