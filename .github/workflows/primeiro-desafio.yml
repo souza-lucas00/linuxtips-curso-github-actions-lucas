@@ -1,32 +1,64 @@
+# Nome que aparecerá na aba Actions do GitHub
 name: Primeiro Desafio
-
+# Define quais eventos irão disparar o workflow
 on:
+  # Permite execução manual pela interface do GitHub
   workflow_dispatch:
+    # Parâmetros que o usuário deverá informar ao executar
     inputs:
+      # Nome do input
       imagem:
+        # Texto exibido para o usuário no formulário
         description: "Informe uma Imagem a ser Consultada"
+        # Obriga o preenchimento do campo
         required: true
+        # Tipo do input (texto livre)
         type: string
 
+# Início da seção de Jobs
 jobs:
+  # Nome lógico do Job
   desafio:
+    # Runner que executará os passos
+    # Neste caso uma máquina Ubuntu hospedada pelo GitHub
     runs-on: ubuntu-latest
-
+    # Lista de etapas que serão executadas sequencialmente
     steps:
+      # Nome amigável da etapa
+      - name: Checkout
+        # Action responsável por baixar o conteúdo do repositório
+        # para dentro do Runner
+        uses: actions/checkout@v4
+
+      # Login no Docker Hub
       - name: Login Docker Hub
+        # Action oficial do Docker para autenticação
         uses: docker/login-action@v3
+        # Parâmetros da Action
         with:
+          # Usuário armazenado em Secret
           username: ${{ secrets.DOCKERHUB_USERNAME }}
+          # Token armazenado em Secret
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      # Faz download da imagem informada pelo usuário
       - name: Baixando Imagem selecionada
+        # Executa comando shell no Ubuntu Runner
         run: docker pull "${{ inputs.imagem }}"
 
+      # Lista todas as imagens Docker existentes localmente
       - name: Listar Imagens
+        # Mostra as imagens presentes após o pull
         run: docker images
-
+        
+      # Executa o Docker Scout
       - name: Docker Scout
+        # Action oficial para análise de vulnerabilidades
         uses: docker/scout-action@v1
+        # Configurações da Action
         with:
+          # Comando que será executado
+          # cves = análise de vulnerabilidades conhecidas
           command: cves
+          # Imagem que será analisada
           image: "${{ inputs.imagem }}"
