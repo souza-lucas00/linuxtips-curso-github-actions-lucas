@@ -4,10 +4,10 @@ on:
   branch_protection_rule:
     types: [created,edited,deleted]
 
-    jobs:
-      print-modification:
-        runs-on: ubuntu-latest
-        steps:
-
-          - name: Avisa sobre a modificação
-            run: echo "Este workflow foi triggado pois uma regra de bran protection rule foi criada ou alterada"
+  jobs:
+    print-modification:
+      runs-on: ubuntu-latest
+      steps:
+        
+        - name: Avisa sobre a modificação
+          run: echo "Este workflow foi triggado pois uma regra de bran protection rule foi criada ou alterada"
