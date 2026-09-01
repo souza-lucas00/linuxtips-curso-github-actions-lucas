@@ -5,9 +5,9 @@ on:
     
 
 jobs:
-  print-create-branch-or-tag:
+  print-delete-branch-or-tag:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Avisa quqnado branch ou tag deletada
+      - name: Avisa quando branch ou tag deletada
         run: echo "Uma nova branch ou tag foi deletada"
