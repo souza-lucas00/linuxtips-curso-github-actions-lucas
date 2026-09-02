@@ -1,0 +1,13 @@
+name: Testando trigger deployment
+
+on:
+  deployment
+    
+
+jobs:
+  job-deployment:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Print Deployment
+        run: echo "Deploy triggado por um deploy externo"
