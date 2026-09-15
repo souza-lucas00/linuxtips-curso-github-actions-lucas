@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Printa Push
-        run: echo "Um push em seus arquivos de Terraform foi feito em uma das branchs principais"
+        run: echo "Um push em seus arquivos de Terraform foi feito em uma das branchs principaisteste"
