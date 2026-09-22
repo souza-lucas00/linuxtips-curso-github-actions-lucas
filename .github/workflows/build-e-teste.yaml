@@ -1,0 +1,24 @@
+name: 02 - Build e Testes
+
+on:
+ workflow_call:
+
+jobs:
+    build-test:
+        runs-on: ubuntu-latest
+        
+        steps:
+         - name: Checkout
+           uses: actions/chekout@v4
+        
+         - name: Build
+           run: |
+            echo "Executando build..."
+            mkdir artefato
+
+         - name:  Testes
+           run: |
+            echo "Executando teste..."
+            echo "Todos os teste passaram!"
+
+ 

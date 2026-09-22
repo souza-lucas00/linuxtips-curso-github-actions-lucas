@@ -1,0 +1,19 @@
+name: 03 - Publiccacao
+
+on: 
+ worflow_run:
+    workflows:
+        - "01 - Validacao de Ambiente"
+    types:
+        - completed
+
+jobs:
+    publicar:
+        if: ${{ github.event.workflow_run.conclusion == 'success'}}
+
+        runs-on: ubuntu-latest
+
+        steps:
+         - name: Publicar
+           run: |
+            echo "Publicando aplicacao.."

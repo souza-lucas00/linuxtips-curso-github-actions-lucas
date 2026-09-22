@@ -1,0 +1,21 @@
+name: 01 - Validando Ambiente
+
+on: 
+    workflow_dispatch:
+
+jobs:
+    validar:
+        runs-on: ubuntu-latest
+    
+        steps:
+            - name: Checkout
+              users: actions/checkout@v4
+
+            - name: Validar Ambiente
+              run: |
+                  echo "Validando Ambiente"
+                  echo "Ambiente Validado"
+    build: 
+        needs: validar
+
+        uses: ./.github/workflows/build-e-teste.yaml
